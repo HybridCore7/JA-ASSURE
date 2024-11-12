@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="favouriteviewModel"
+            type="com.example.movieappwithdagger.ui.main.favouriteMovie.FavouriteMovieViewModel" />
+
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dBackground"
+        tools:context=".ui.main.favouriteMovie.FavouriteMovieFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/movie_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                setProgressBar="@{favouriteviewModel.DataReady}"
+                android:layout_gravity="center"
+                android:layout_marginStart="170dp"
+                android:layout_marginTop="292dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/moviesRecycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                favouriteadapter="@{favouriteviewModel.listMovies}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>
